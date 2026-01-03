@@ -1,9 +1,11 @@
  const express = require('express');
  const connectDB = require("./config/database")
  const app = express();
-
  const User = require("./models/user");
+ const user = require('./models/user');
+
  app.use(express.json());
+
   app.post("/signup", async (req,res) => {
      
     //Creating a new instance of the user models
@@ -17,6 +19,47 @@
        
   });
  
+  app.get("/user", async (req,res)=>{
+    const userEmail = req.body.emailId; 
+    try{
+      const user = await User.findOne({emailId: userEmail})
+      if(!user){
+        res.status(400).send("User not found")
+      }
+      res.send(user);
+    }
+    catch (err){
+      res.status(400).send("Something went wrong");
+    }
+
+  });
+
+  app.delete("/delete", async (req,res) => {
+    const userEmail = req.body.emailId; 
+    try{
+      const user = await User.deleteOne({emailId: userEmail})
+      if(!user){
+        res.status(400).send("User not found")
+      }
+      res.send(user);
+    }
+    catch (err){
+      res.status(400).send("Something went wrong");
+    }
+
+  })
+
+  app.get("/feed", async (req, res) => {
+    try{
+      const user = await User.find({});
+      res.send(user);
+    }
+    catch{
+      res.status(400).send("User Not Found");
+    }
+    
+  });
+
  connectDB().then(() => { 
     console.log("Database connect successfully...");
     app.listen(3000, () =>{

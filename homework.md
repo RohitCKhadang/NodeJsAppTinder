@@ -43,3 +43,7 @@
 - Create userSchema
 - Create /signup API to add data to database
 - Push some documents using API calls
+
+-Difference between Javascript and JSON ?
+- Add the express.json middleware to your app
+- Make your signup API dynamically

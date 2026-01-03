@@ -2,22 +2,19 @@
 
  const app = express();
 
- app.get("/user", (req,res) =>{
-   res.send({fistName:"Rohit", lastName:"Khadang"});
- });
- 
- app.post("/user", (req,res) => {
-   res.send("Data successfully saved to the database");
- });
 
- app.delete("/user", (req,res) => {
-   res.send("Deleted successfully");
+ app.get("/user", [(req,res, next) => {
+    console.log("Route handler 1");
+   //res.send("Response 1");
+   next();
+ }, (req, res, next) => {
+    console.log("Route Handler 2");
+    //res.send("Response 2");
+    next();
+ }], (req,res,next) => {
+  console.log("Request Handler 3")
+  res.send("Response 3")
  });
- 
- app.use("/test",(req,res) =>{
-    res.send("Hello, from  the test server 3000");
- });
-
   
 
  app.listen(3000, () =>{

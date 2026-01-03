@@ -32,3 +32,14 @@
 - how express js basically  handle request
 - difference between app.use and app.all
 - error handling app.use("/", err,req,res,next)
+
+
+//New
+- create a free cluster on MongoDB official website(Mongo Atlas)
+- Install mongoose Library
+-Connect your application to the Database "Connection-url"/databaseName
+- Call the connectDB function and connect to database before starting application on 3000
+
+- Create userSchema
+- Create /signup API to add data to database
+- Push some documents using API calls

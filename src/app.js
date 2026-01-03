@@ -33,22 +33,7 @@
     }
 
   });
-
-  app.delete("/delete", async (req,res) => {
-    const userEmail = req.body.emailId; 
-    try{
-      const user = await User.deleteOne({emailId: userEmail})
-      if(!user){
-        res.status(400).send("User not found")
-      }
-      res.send(user);
-    }
-    catch (err){
-      res.status(400).send("Something went wrong");
-    }
-
-  })
-
+ 
   app.get("/feed", async (req, res) => {
     try{
       const user = await User.find({});
@@ -59,6 +44,35 @@
     }
     
   });
+
+  //Delete a user 
+  app.delete("/user", async (req, res) => {
+  const userId = req.body.userId;
+  try {
+    const user = await User.findByIdAndDelete(userId);
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    res.send("User deleted successfully");
+  } catch (err) {
+    res.status(400).send("Something went wrong");
+  }
+});
+ 
+//Patch
+app.patch("/user", async (req,res) => {
+  const userId = req.body.userId;
+  const data = req.body;
+
+  try{
+    await User.findByIdAndUpdate({_id: userId},data);
+    res.send("User updated successfully");
+  }
+  catch (err){
+    res.status(400).send("Something went wrong");
+  }
+});
 
  connectDB().then(() => { 
     console.log("Database connect successfully...");

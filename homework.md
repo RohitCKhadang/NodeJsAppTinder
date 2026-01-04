@@ -69,3 +69,13 @@
 
 -Add validator liabrary: npm i validator
 - Explore validator Liabreay functions and use validator function for password, photourl,emailId
+
+
+- //Encrypt password
+- install liabrary :npm i bcrypt
+
+- Create helper function
+- validate data in signUp API 
+- Install bcrypt package
+- Create password using bcrypt.hash & save the user is encrypted password 
+- 

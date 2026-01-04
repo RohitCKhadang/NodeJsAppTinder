@@ -61,11 +61,25 @@
 });
  
 //Patch
-app.patch("/user", async (req,res) => {
-  const userId = req.body.userId;
+app.patch("/user/:userId", async (req,res) => {
+  const userId = req.params?.userId;
   const data = req.body;
 
+  
+
   try{
+
+  const allow_update =["photoUrl","about","gender","age","skills"];
+  const isUpdateAllowed = Object.keys(data).every((k) =>
+   allow_update.includes(k)
+  ); 
+  if(!isUpdateAllowed){
+    throw new Error("Update not be allowed")
+  };
+  if(data?.skills.length > 5){
+    throw new Error("Skills cannot greater than 5")
+  };
+
     await User.findByIdAndUpdate({_id: userId},data,{
       runValidators:true,
     });

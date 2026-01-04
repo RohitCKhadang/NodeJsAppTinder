@@ -66,3 +66,6 @@
 -Add timestamps to the user-Schema
 -Add API level validation on PATCH request and Signup post api
 -Data Sanitization : Add API validation for each field
+
+-Add validator liabrary: npm i validator
+- Explore validator Liabreay functions and use validator function for password, photourl,emailId

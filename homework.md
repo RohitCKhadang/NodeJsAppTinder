@@ -79,3 +79,18 @@
 - Install bcrypt package
 - Create password using bcrypt.hash & save the user is encrypted password 
 - 
+
+- create Login API
+- compare password and throw errors if email valid
+
+
+///Login API
+- midddle ware of express- Install package - npm i cookie-parser
+- Json web token  : npm i jsonwebtoken
+- create profile
+- In Login API , after email and password validation, create JWT token and send to the user
+- read the cookies inside yur profile 
+
+Write userAuth middleware
+- Add the userAuth middleware in profile API and send new connection API 
+- Set the expiry of JWT token and cookies to 7 days

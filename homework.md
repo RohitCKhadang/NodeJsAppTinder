@@ -78,7 +78,7 @@
 - validate data in signUp API 
 - Install bcrypt package
 - Create password using bcrypt.hash & save the user is encrypted password 
-- 
+
 
 - create Login API
 - compare password and throw errors if email valid
@@ -94,3 +94,10 @@
 Write userAuth middleware
 - Add the userAuth middleware in profile API and send new connection API 
 - Set the expiry of JWT token and cookies to 7 days
+
+
+# Express Router 
+- go to the documentation and read about router
+- Create a list of all API you can think of
+- Group multiple routes under respective router 
+- 
